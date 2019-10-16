@@ -1,3 +1,4 @@
+const db = require ('./db')
 const express = require ('express')
 /*{ Declare a constant named app and set 
     it to the output of the express function.}*/

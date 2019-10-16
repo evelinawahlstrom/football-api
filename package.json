@@ -18,6 +18,8 @@
   "homepage": "https://github.com/evelinawahlstrom/football-api#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "pg": "^7.9.0",
+    "sequelize": "^5.19.6"
   }
 }
