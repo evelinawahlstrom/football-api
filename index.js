@@ -1,10 +1,15 @@
-const db = require ('./db')
+//const db = require ('./db') - imported in teamRouter now
 const express = require ('express')
-const Team = require ('./team/model')
+// const Team = require ('./team/model') - imported in 
+// teamRouter now
+const teamRouter = require ('./team/router')
 /*{ Declare a constant named app and set 
     it to the output of the express function.}*/
 const app = express()
 
+// Pass the teamRouter to app.use to 
+// register the middleware
+app.use(teamRouter)
 
 /*{Declare a constant named port equal to the process.env.PORT if it is defined. If it is not defined (if the left side of the || is false), use the number 4000, see code below}*/
 const port = process.env.PORT || 4000
