@@ -1,5 +1,6 @@
 const db = require ('./db')
 const express = require ('express')
+const Team = require ('./team/model')
 /*{ Declare a constant named app and set 
     it to the output of the express function.}*/
 const app = express()
