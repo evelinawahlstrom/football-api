@@ -13,6 +13,7 @@ const Team = db.define(
         name: {
         type: Sequelize.STRING,
         field: 'team_name'
+        
         /*{This above determines the name of the column that will be added to the table. After you've run the app, go to Postico (using the right password --> and you should see the table there with team_name as a column name)}*/
     }
 },

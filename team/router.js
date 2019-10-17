@@ -19,6 +19,16 @@ router.get('/team', (req, res, next ) => {
 /// call this thing an pass it the error
 })
 
+router.get('/team/:id', (req, res, next ) => {
+    const id = req.params.id
+    Team.findByPk(id)
+    .then(team => {
+        res.send(team)
+})
+.catch(next)
+/// call this thing an pass it the error
+})
+
 router.post('/team', (req, res, next ) => {
   //sequelize.sync()
   (Team.create(req.body))
