@@ -19,4 +19,13 @@ router.get('/team', (req, res, next ) => {
 /// call this thing an pass it the error
 })
 
+router.post('/team', (req, res, next ) => {
+  //sequelize.sync()
+  (Team.create(req.body))
+    .then(teams => {
+        res.json(teams)
+    })
+    .catch(next)
+})
+
 module.exports = router
