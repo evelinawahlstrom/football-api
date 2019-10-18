@@ -1,13 +1,25 @@
 const express = require ('express')
 const teamRouter = require ('./team/router')
+const playerRouter = require ('./players/router')
 const bodyParser = require('body-parser')
+const cors = require('cors')
+
+//const db = require ('./')
+
+
 
 /*{ Declare a constant named app and set 
     it to the output of the express function.}*/
 const app = express()
+const middleware = cors()
 const jsonParser = bodyParser.json()
+// THE MIDDLEWARE NEED TO BE before teamRouter, otherwise it won't work
+app.use(middleware)
 app.use(jsonParser)
 app.use(teamRouter)
+app.use(playerRouter)
+
+
 //const db = require ('./db') - imported in teamRouter now
 // const Team = require ('./team/model') - imported in 
 // teamRouter now

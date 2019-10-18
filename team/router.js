@@ -19,6 +19,7 @@ router.get('/team', (req, res, next ) => {
 /// call this thing an pass it the error
 })
 
+/// now when relations: chanhe :id to :teamID
 router.get('/team/:id', (req, res, next ) => {
     const id = req.params.id
     Team.findByPk(id)
