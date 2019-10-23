@@ -48,7 +48,7 @@ router.put("/players/:playersId", (req, res, next) => {
       .catch(next)
   })
 
-// 2. 
+// 2. //// have authMiddleware???
 router.post('/players', (req, res, next ) => {
   (Player.create(req.body))
     .then(players => {
