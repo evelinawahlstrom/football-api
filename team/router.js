@@ -1,5 +1,6 @@
 const { Router } = require ('express')
 const Team = require ('./model')
+const authMiddleWare = require ('../auth/middleware')
 
 // Instantiate a router.
 const router = new Router()
@@ -10,7 +11,7 @@ const router = new Router()
 Call the Team.findAll method.
 Add a then callback. It will receive the list of teams. Send the list as the response.
 Add a catch callback. It will receive an error if it is thrown. Pass it to next.}*/
-router.get('/team', (req, res, next ) => {
+router.get('/teams', (req, res, next ) => {
     Team.findAll()
     .then(teams => {
         res.send(teams)
@@ -20,7 +21,9 @@ router.get('/team', (req, res, next ) => {
 })
 
 /// now when relations: chanhe :id to :teamID
-router.get('/team/:id', (req, res, next ) => {
+
+// add player here ????!!!!
+router.get('/teams/:id', (req, res, next ) => {
     const id = req.params.id
     Team.findByPk(id)
     .then(team => {
@@ -30,7 +33,7 @@ router.get('/team/:id', (req, res, next ) => {
 /// call this thing an pass it the error
 })
 
-router.post('/team', (req, res, next ) => {
+router.post('/teams', authMiddleWare, (req, res, next ) => {
   //sequelize.sync()
   (Team.create(req.body))
     .then(teams => {

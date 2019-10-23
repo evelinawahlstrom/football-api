@@ -1,33 +1,49 @@
 const express = require ('express')
-const teamRouter = require ('./team/router')
-const playerRouter = require ('./players/router')
+
+// After require/use authMiddleware, test the middleware by
+// http :4000/login email="hej@google.com" password="jekhe"
+
+// middlewares
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const bodyParserMiddleWare = bodyParser.json()
+const corsMiddleWare = cors()
+///const authMiddleWare = require ('./auth/router')
+
+
+// Routers
+const teamRouter = require ('./team/router')
+const playerRouter = require ('./players/router')
+const authRouter = require("./auth/router");
+const userRouter = require("./user/router");
+
+// Models & Db
 const Team = require('./team/model')
 const Player = require('./players/model')
+const User = require ('./user/model')
 const db = require('./db')
 
 
-
-/*{ Declare a constant named app and set 
-    it to the output of the express function.}*/
 const app = express()
-const middleware = cors()
-const jsonParser = bodyParser.json()
+/*{Declare a constant named port equal to the process.env.PORT if it is defined. If it is not defined (if the left side of the || is false), use the number 4000, see code below}*/
+const port = process.env.PORT || 4000
 // THE MIDDLEWARE NEED TO BE before teamRouter, otherwise it won't work
-app.use(middleware)
-app.use(jsonParser)
-app.use(teamRouter)
-app.use(playerRouter)
+app
+  // use auth middleware for entire routers (maybe a bit heavy handed)
+  // .use(authMiddleWare)
+  //.use(loggingMiddleWare)
+  .use(corsMiddleWare)
+  .use(bodyParserMiddleWare)
+  .use(userRouter)
+  .use(authRouter)
+  .use(playerRouter)
+  .use(teamRouter)
 
 
 //const db = require ('./db') - imported in teamRouter now
 // const Team = require ('./team/model') - imported in 
 // teamRouter now
 
-
-/*{Declare a constant named port equal to the process.env.PORT if it is defined. If it is not defined (if the left side of the || is false), use the number 4000, see code below}*/
-const port = process.env.PORT || 4000
 
 /*{ this below, we are passint port in as the first argument --> CANNOT GET/ in     browser. And as the second argument, I'm passing in a arrow function that console log which port I'm in when called.
 }*/

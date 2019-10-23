@@ -11,7 +11,7 @@ const db = new Sequelize(databaseUrl)
 Add a then callback to sync that logs a message confirming the database schema has been updated.
 Add a catch callback that will pass any errors to console.error.}*/
 
-/// When defining relations, put force off(!!!)
+
 
 
 module.exports = db
