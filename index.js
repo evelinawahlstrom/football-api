@@ -29,7 +29,7 @@ const app = express()
 const port = process.env.PORT || 4000
 // THE MIDDLEWARE NEED TO BE before teamRouter, otherwise it won't work
 app
-  // use auth middleware for entire routers (maybe a bit heavy handed)
+  // use auth middleware for entire routers (maybe a bit heavy handed), se it in team/router.js (!)
   // .use(authMiddleWare)
   //.use(loggingMiddleWare)
   .use(corsMiddleWare)
@@ -73,3 +73,14 @@ const playerPromises = players.map((player) => Player.create(player))
 return Promise.all(playerPromises)
 })
 .catch(console.error);
+
+/* 
+
+TODO
+
+- player Model
+- router -> Player router
+- Define the relationships
+- router -> add routes to team router so you can get the players of a team?
+
+*/
