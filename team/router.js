@@ -1,5 +1,8 @@
 const { Router } = require ('express')
 const Team = require ('./model')
+/// this const below is added so that players, can be 
+/// included when we get teams/teamId
+const Player = require ('../players/model')
 const authMiddleWare = require ('../auth/middleware')
 
 // Instantiate a router.
@@ -22,7 +25,16 @@ router.get('/teams', (req, res, next ) => {
 
 /// now when relations: chanhe :id to :teamID
 
-// add player here ????!!!!
+router.get("/teams/:teamId", (req, res, next) => {
+    Team.findByPk(req.params.teamId, { include: [Player] })
+      .then(team => {
+        res.send(team);
+      })
+      .catch(next);
+  });
+
+// add player here - YES (see above)
+/*
 router.get('/teams/:id', (req, res, next ) => {
     const id = req.params.id
     Team.findByPk(id)
@@ -31,7 +43,7 @@ router.get('/teams/:id', (req, res, next ) => {
 })
 .catch(next)
 /// call this thing an pass it the error
-})
+})*/
 
 router.post('/teams', authMiddleWare, (req, res, next ) => {
   //sequelize.sync()
@@ -41,5 +53,43 @@ router.post('/teams', authMiddleWare, (req, res, next ) => {
     })
     .catch(next)
 })
+
+// Delete team
+
+router.delete("/teams/:teamId", (req, res, next) => {
+    // console.log('WHAT IS REQ.PARAMS before we get wrecked by params', req.params)
+    // res.send('Some people want to watch the world burn') // -> route works
+  
+    Team.destroy({
+      where: {
+        id: req.params.teamId
+      }
+    })
+      .then(numDeleted => {
+        if (numDeleted) {
+          res.status(204).end();
+        } else {
+          res.status(404).end();
+        }
+      })
+      .catch(next);
+  });
+  
+  //Update team 
+  router.put("/teams/:teamId", (req, res, next) => {
+    // res.send('oh hi')
+    // console.log(req.params, 'WRECKED BY PARAMS??')
+    Team.findByPk(req.params.teamId)
+      .then(team => {
+        console.log("TEAM FOUND?", team);
+        if (team) {
+          team.update(req.body).then(team => res.json(team));
+        } else {
+          res.status(404).end();
+        }
+      })
+      .catch(next);
+  });
+  
 
 module.exports = router

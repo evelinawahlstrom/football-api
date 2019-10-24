@@ -58,17 +58,17 @@ router.post("/login", (req, res) => {
     });
 });
 /// authMiddleWare is defined in middleware.js
-router.get('/secret-endpoint', authMiddleWare, (req, res) => {
+/*router.get('/secret-endpoint', authMiddleWare, (req, res) => {
   res.send({
     message: `Thanks for visiting the secret endpoint ${req.user.email}.`,
   })
-})
+})*/
 
 
 
 /*
-THIS SYNTAX BELOW IS BEFORE - using authMiddleWare, as a middleware, then 
-the code is as above ( much shorter, as we let middleware take care of things for ut)
+THIS SYNTAX BELOW IS BEFORE - using authMiddleWare, as a middleware, --> 
+the code above ( much shorter, as we let middleware, which is a part of ExpressJS --> take care of things for us)
 
 
 router.get("/secret-endpoint", (req, res) => {
