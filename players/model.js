@@ -22,8 +22,10 @@ const Player = db.define(
 // 1. Make sure Models are imported correct
 //    Make sure force: true is on (!!!) in db
 // --> otherwise we cannot change a table!
-Player.belongsTo(Team) // get me the team for this player --> se if 
-                        //teamid is added 
+Player.belongsTo(Team, {onDelete: 'cascade'}) 
+// cascade, lets us delete all players within the team that is deleted
+// get me the team for this player --> se if 
+// teamid is added 
 Team.hasMany(Player) /// get me the players of the team
 /// both of the dependencies SHOULD be in the same model (!!!)
 

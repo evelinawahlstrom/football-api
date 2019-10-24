@@ -56,7 +56,7 @@ router.post('/teams', authMiddleWare, (req, res, next ) => {
 
 // Delete team
 
-router.delete("/teams/:teamId", authMiddleWare, (req, res, next) => {
+router.delete("/teams/:teamId", authMiddleWare,  (req, res, next) => {
     // console.log('WHAT IS REQ.PARAMS before we get wrecked by params', req.params)
     // res.send('Some people want to watch the world burn') // -> route works
   
