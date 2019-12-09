@@ -1,9 +1,9 @@
-# :soccer: FOOTBALL APP :soccer:
+# :soccer: FOOTBALL MANAGMENT APP :soccer:
 
 ## What this project is about:
 This webpage was made during week 6/11 of the **[Codaisseur Full Stack Developer BootCamp](https://codaisseur.com/become-a-developer)** with the intention of practising developing a full stack application. 
 </br>
-**THIS IS THE SERVER*
+**THIS IS THE SERVER**
 
 ## Related Repositories 
 The frontend can be found **[HERE](https://github.com/evelinawahlstrom/football-client)**
