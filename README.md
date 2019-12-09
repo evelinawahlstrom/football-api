@@ -15,8 +15,17 @@ The frontend can be found **[HERE](https://github.com/evelinawahlstrom/football-
 - **[To do](#to-do)**
 
 ## Technologies used
+Express, Sequelize, bcrypt, pg
 
 ## How to install
+
+1. Clone the git repository
+
+`git clone https://github.com/evelinawahlstrom/football-api `
+
+2. cd into the folder football-api
+
+3. 
 
 ## Features working
 
