@@ -15,7 +15,7 @@ The frontend can be found **[HERE](https://github.com/evelinawahlstrom/football-
 - **[To do](#to-do)**
 
 ## Technologies used
-Express, Sequelize, bcrypt, pg
+Express, Sequelize, bcrypt, pg, cors
 
 ## How to install
 
@@ -25,7 +25,23 @@ Express, Sequelize, bcrypt, pg
 
 2. cd into the folder football-api
 
-3. 
+3. In your terminal, run the following command to install all the dependencies
+
+```
+npm install
+```
+
+4. To start the terminal with nodemon, use the following command (assumes nodemon is installed globally)
+
+```
+nodemon index.js
+```
+ 
+5. To start the code without tracking saved changes, you can simply run:
+
+```
+node index.js
+```
 
 ## Features working
 
