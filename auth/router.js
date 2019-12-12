@@ -14,7 +14,7 @@ OBSOBSOBS Don't forget to in INDEX.JS: require and app.use the file auth/router.
 making the router accessible
 }*/
 
-// define endpoints here
+// define endpoints here, and then not necessary to have toData, because the authMiddleWare is containing that
 router.post("/login", (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res
